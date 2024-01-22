@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Custom website</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Roboto:700&display=swap');
+
+        * {
+            padding: 0;
+            margin: 0;
+
+        }
+
+        .wrapper {
+            background: url(https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D) no-repeat;
+            background-size: cover;
+            height: 100vh;
+        }
+
+        .navbar {
+            position: fixed;
+            height: 80px;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: red;
+            text-decoration: none;
+        }
+
+         .logo img {
+            width: 35%;
+            height: 25%;
+            display: block;
+        }
+      .logo{
+            position: relative;
+            height:auto;
+            width:20%;
+            left:10%;
+            float:left;
+            font-family:'Lato',sans-serif;
+            font-size:35px;
+            font-weight:600;
+            cursor: pointer;
+            text-shadow:0px 0.5px 5px rgba(0, 0, 0, 0.2);
+            transition: 0.1s ease-in-out;
+        }
+        .navbar ul {
+            float: right;
+            margin-right: 20px;
+        }
+
+        .navbar ul li {
+            list-style: none;
+            /**/
+            display: inline-block;
+            line-height: 80px;
+        }
+
+        .navbar ul li a {
+            font-size: 20px;
+            font-family: 'Roboto', sans-serif;
+            color: white;
+            padding: 6px 13px;
+            text-decoration: none;
+            transition: .4s;
+        }
+
+        .navbar ul li a.active,
+        .navbar ul li a:hover {
+            background: red;
+            border-radius: 2px;
+        }
+
+        .wrapper .center {
+            position: absolute;
+            left: 50%;
+            top: 55%;
+            transform: translate(-50%, -50%);
+            font-family: sans-serif;
+            user-select: none;
+            background-color: rgba(255, 255, 255, 0.7); /* Set the background to a semi-transparent white */
+            padding: 20px; /* Add some padding for better readability */
+            border-radius: 10px; /* Add rounded corners for a container effect */
+        }
+
+        .center h1 {
+            color: black;
+            font-size: 70px;
+            width: 900px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .center h2 {
+            color: black;
+            font-size: 70px;
+            font-weight: bold;
+            margin-top: 10px;
+            width: 885px;
+            text-align: center;
+        }
+
+        .center .buttons {
+            margin: 35px auto;
+            text-align: center;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .buttons button {
+            height: 50px;
+            width: 150px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #ffb3b3;
+            background: red;
+            outline: none;
+            cursor: pointer;
+            border: 1px solid #cc0000;
+            border-radius: 25px;
+            transition: .4s;
+            margin: 5px; /* Add spacing between buttons */
+        }
+
+        .buttons .btn2 {
+            margin-left: 0;
+            display: block;
+        }
+
+        .buttons button:hover {
+            background: #cc0000;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="wrapper">
+    <nav class="navbar">
+        <div class="navbar">
+            <div class="logo"> <img src="/logo.png" alt="logo"></div>
+            <ul>
+                <li class="active"><a href="/">Home</a></li>
+                <li><a href="/aboutus">About Us</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+                <li><a href="/reservation/all">All Offers</a></li>
+
+            </ul>
+        </div>
+
+    </nav>
+    <div class="center">
+        <h1>Welcome To StayMate! </h1>
+        <h1>Create Something New! </h1>
+        <div class="buttons">
+            <a th:href="@{/login}">
+                <button type="submit">Login</button>
+            </a>
+            <a th:href="@{/user/reg}">
+                <button class="btn2" type="submit"> Registration</button>
+            </a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

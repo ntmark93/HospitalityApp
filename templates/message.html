@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Us</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      background: url(https://static.vecteezy.com/system/resources/previews/006/426/019/large_2x/old-wooden-table-with-blurred-hotel-lobby-background-free-photo.jpg);
+      background-size: cover;
+    }
+
+    .sidenav {
+      height: 100%;
+      width: 20%;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      background-color: #111;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+    }
+
+    .sidenav a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 25px;
+      color: #818181;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .sidenav a:hover {
+      color: #f1f1f1;
+    }
+
+    .sidenav .closebtn {
+      position: absolute;
+      top: 0;
+      right: 25px;
+      font-size: 36px;
+      margin-left: 50px;
+    }
+
+    #main {
+      transition: margin-left .5s;
+      padding: 20px;
+    }
+
+    @media screen and (max-height: 450px) {
+      .sidenav {padding-top: 15px;}
+      .sidenav a {font-size: 18px;}
+    }
+
+    .btn-contact {
+      color: black;
+      background-color: dodgerblue;
+      padding: 0 10px;
+    }
+  </style>
+</head>
+<body>
+<span style="font-size:50px;cursor:pointer;color: black;padding-left: 10px" onclick="openNav()">&#9776;</span>
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a th:href="@{/}" >Profile</a>
+  <a th:href="@{/contact}" class="btn-contact">Contact Us!</a>
+  <form class="navbar-brand" th:action="@{/logout}" method="post">
+    <button type="submit" class="btn-logout">LogOut</button>
+  </form>
+</div>
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 50vh;">
+  <h5>Thank you for contacting us. We'll get back to you shortly!</h5>
+</div>
+</body>
+</html>

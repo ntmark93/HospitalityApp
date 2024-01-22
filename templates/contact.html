@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Us</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url("https://paperclipbw.com/wp-content/uploads/2022/08/web-contact-us.jpg");
+            color: #fff;
+            margin: 0;
+            overflow: auto;
+        }
+
+
+        .contact {
+            position: relative;
+            min-height: 100vh;
+            padding: 70px 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            /*background: url(https://i0.wp.com/gdcindia.co.in/wp-content/uploads/2019/03/contact-us-background.jpg?ssl=1);*/
+            /*background-size: cover;*/
+        }
+
+        .contact .content {
+            max-width: 600px;
+            text-align: center;
+
+        }
+
+        .contact .content h2 {
+            font-size: 36px;
+            font-weight: 500;
+            color: black;
+            margin: 30px auto; /* 50px távolság a lap tetejétől, és középre igazítva */
+        }
+
+        .contact .content p {
+            color: black;
+            font-weight: bold;
+            font-size: larger;
+        }
+
+
+        .container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .container .contactInfo {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+        }
+
+
+
+        .container .contactInfo .box .text {
+            display: flex;
+            margin-left: 20px;
+            font-size: 16px;
+            color: black;
+            flex-direction: column;
+            font-weight: 300;
+        }
+
+        .container .contactInfo .box .text h3 {
+            font-weight: 500;
+            color: rebeccapurple;
+        }
+
+        .contactForm {
+            width: 40%;
+            padding: 40px;
+            background: #fff;
+        }
+
+        .contactForm h2 {
+            font-size: 30px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .contactForm .inputBox {
+            position: relative;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .contactForm .inputBox input,
+        .contactForm .inputBox textarea {
+            width: 100%;
+            padding: 5px 0;
+            font-size: 16px;
+            margin: 10px 0;
+            border: none;
+            border-bottom: 2px solid #333;
+            outline: none;
+            resize: none;
+        }
+
+        .contactForm .inputBox span {
+            position: absolute;
+            left: 0;
+            padding: 5px 0;
+            font-size: 16px;
+            margin: 10px 0;
+            pointer-events: none;
+            transition: 0.5s;
+            color: #666;
+
+        }
+
+        .contactForm .inputBox input:focus ~ span,
+        .contactForm .inputBox input:valid ~ span,
+        .contactForm .inputBox textarea:focus ~ span,
+        .contactForm .inputBox textarea:valid ~ span {
+            color: #e91e63;
+            font-size: 12px;
+            transform: translateY(-20px);
+
+        }
+
+        .contactForm .inputBox input[type="submit"] {
+            width: 100px;
+            background: #00bcd4;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        .navbar {
+            position: fixed;
+            height: 90px;
+            width: 100%;
+            top: 0px;
+            left: 0;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+
+        .navbar ul {
+            float: right;
+            margin-right: 20px;
+        }
+
+        .navbar ul li {
+            list-style: none;
+            /**/
+            display: inline-block;
+            line-height: 20px;
+        }
+
+        .navbar ul li a {
+            font-size: 20px;
+            font-family: 'Roboto', sans-serif;
+            color: white;
+            padding: 6px 13px;
+            text-decoration: none;
+            transition: .4s;
+        }
+
+        .navbar ul li a.active,
+        .navbar ul li a:hover {
+            background: red;
+            border-radius: 2px;
+        }
+
+        .logo{
+            position: relative;
+            height:auto;
+            width:20%;
+            left:10%;
+            float:left;
+            font-family:'Lato',sans-serif;
+            font-size:35px;
+            font-weight:600;
+            cursor: pointer;
+            text-shadow:0px 0.5px 5px rgba(0, 0, 0, 0.2);
+            transition: 0.1s ease-in-out;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: red;
+            text-decoration: none;
+        }
+        .logo img {
+            width: 35%;
+            height: 25%;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<section class="contact">
+    <nav class="navbar">
+        <div class="navbar">
+            <div class="logo"> <img src="/logo.png" alt="logo"></div>
+            <ul>
+                <li class="active"><a href="/">Home</a> </li>
+                <li><a href="/aboutus">About Us</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+            </ul>
+        </div>
+
+    </nav>
+    <div class="content">
+        <h2>Contact US</h2>
+        <p> If you have any questions, please contact us! </p>
+    </div>
+    <div class="container">
+        <div class="contactInfo">
+            <div class="box">
+                <div class="text">
+                    <h3>Address</h3>
+                    <p>Budapest, Bécsi út 53-55, 1036
+                        Magyarország</p>
+                </div>
+                <div class="box">
+                    <div class="text">
+                        <h3>Phone</h3>
+                        <p>0747969570</p>
+                    </div>
+                    <div class="box">
+                        <div class="text">
+                            <h3>Email</h3>
+                            <p>23staymate23@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="contactForm">
+        <form th:action="@{/contact}" method="post">
+            <h2>Send message</h2>
+            <div class="inputBox">
+                <label for="name"></label>
+                <input type="text" id="name" name="name" required>
+                <span>Full Name</span>
+            </div>
+            <div class="inputBox">
+                <label for="email"></label>
+                <input type="email" id="email" name="email" required>
+                <span>Email</span>
+            </div>
+            <div class="inputBox">
+                <label for="subject"></label>
+                <input type="text" id="subject" name="subject" required>
+                <span>Subject</span>
+            </div>
+            <div class="inputBox">
+                <label for="message"></label>
+                <textarea id="message" name="message" required></textarea>
+                <span>Type your message</span>
+            </div>
+
+            <button type="submit" class="btn">Send</button>
+        </form>
+    </div>
+</section>
+</body>
+</html>

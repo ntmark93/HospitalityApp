@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <style>
+        body {
+            font-family: poppins, serif;
+            font-size: 16px;
+            color: #fff;
+            margin: 0;
+            overflow: scroll;
+        }
+        .form-box {
+            background-color: rgba(0, 0, 0, 0.5);
+            margin: 100px auto; /* 50px távolság a lap tetejétől, és középre igazítva */
+            padding: 40px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px #000;
+            width: 500px;
+            height: 650px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            text-align: center;
+        }
+
+        .form-box:before {
+            background-image: url("https://wallpapers.com/images/hd/hotel-background-2qosz2h6xb1xpnka.jpg");
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            content: "";
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            z-index: -1;
+            display: block;
+            filter: blur(2px);
+        }
+        .form-box .header-text {
+            font-size: 32px;
+            font-weight: 600;
+            padding-bottom: 40px;
+            text-align: center;
+        }
+        .form-box input {
+            margin: 10px 0px;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            width: 100%;
+            font-size: 18px;
+            font-family: poppins;
+        }
+        .form-box span {
+            font-size: 14px;
+        }
+        .form-box button {
+            background-color: deepskyblue;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+            padding: 10px;
+            margin: 20px 0px;
+        }
+        span a {
+            color: #BBB;
+        }
+        .navbar {
+            position: fixed;
+            height: 80px;
+            width: 100%;
+            top: 0px;
+            left: 0;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+
+        .navbar ul {
+            float: right;
+            margin-right: 20px;
+        }
+
+        .navbar ul li {
+            list-style: none;
+            /**/
+            display: inline-block;
+            line-height: 40px;
+        }
+
+        .navbar ul li a {
+            font-size: 20px;
+            font-family: 'Roboto', sans-serif;
+            color: white;
+            padding: 6px 13px;
+            text-decoration: none;
+            transition: .4s;
+        }
+
+        .navbar ul li a.active,
+        .navbar ul li a:hover {
+            background: red;
+            border-radius: 2px;
+        }
+        .logo{
+            position: relative;
+            height:auto;
+            width:20%;
+            left:10%;
+            float:left;
+            font-family:'Lato',sans-serif;
+            font-size:35px;
+            font-weight:600;
+            cursor: pointer;
+            text-shadow:0px 0.5px 5px rgba(0, 0, 0, 0.2);
+            transition: 0.1s ease-in-out;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: red;
+            text-decoration: none;
+        }
+        .logo img {
+            width: 35%;
+            height: 25%;
+            display: block;
+        }
+    </style>
+
+</head>
+<body>
+<nav class="navbar">
+    <div class="navbar">
+        <div class="logo"> <img src="/logo.png" alt="logo"></div>
+        <ul>
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="/aboutus">About Us</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+        </ul>
+    </div>
+
+</nav>
+<div class="form-box">
+    <div class="header-text">
+        Registration Form
+    </div>
+    <form th:action="@{/user/reg}" enctype="multipart/form-data" method="post">
+
+        <div class="error-message" th:if="${emailTakenMessage}">
+            <p th:text="${emailTakenMessage}"></p>
+        </div>
+
+        <div class="”input-form">
+            <label for="surname"></label>
+            <select th:field="*{newUser.surName}" id="surname">
+                <option value="Mr.">Mr.</option>
+                <option value="Mrs.">Mrs.</option>
+                <option value="Ms.">Ms.</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <label for="firstname"></label>
+            <input th:field="*{newUser.firstName}" type="text" id="firstname" placeholder="Firstname: ">
+
+            <label for="lastname"></label>
+            <input th:field="*{newUser.lastName}" type="tel" id="lastname" placeholder="Lastname:">
+
+            <label for="phoneNum"></label>
+            <input th:field="*{newUser.phoneNumber}" type="tel" id="phoneNum" placeholder="Tel.number:">
+
+            <label for="email"></label>
+            <input th:field="*{newUser.email}" type="email" id="email" required placeholder="Enter Your Email:">
+
+            <label for="password"></label>
+            <input th:field="*{newUser.password}" type="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required
+                   oninvalid="this.setCustomValidity('- must contains min. one digit\n- one lowercase & uppercase letter\n- one special character\n- minimum of 8 characters long.')"
+                   oninput="this.setCustomValidity('')"
+                   placeholder="Enter your Password">
+
+            <label for="personalId"></label>
+            <input th:field="*{newUser.personalId}" type="text" id="personalId" placeholder="Personal ID: ">
+
+            <label for="birthdate"></label>
+            <input th:field="*{newUser.birthDate}" type="date" id="birthdate">
+
+            <div class="image">
+                <div class="form-group">
+                    <input type="hidden" th:field="*{newUser.photo}">
+                    <input type="file" name="image" accept="image/*" class="form-control-file">
+                </div>
+            </div>
+            <div class="box-footer"></div>
+            <div class="btn">
+                <button type="submit">Register</button>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

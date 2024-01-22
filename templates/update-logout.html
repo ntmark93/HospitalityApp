@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #495057;
+    margin: 0;
+  }
+
+  .container-fluid {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .navbar {
+    background-color: #007bff;
+    padding: 15px 0;
+  }
+
+  .navbar-brand {
+    color: #ffffff;
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+
+  .btn-link {
+    color: #ffffff;
+  }
+
+  h1 {
+    color: #dc3545; /* Red color */
+    text-align: center;
+    margin-top: 50px;
+  }
+</style>
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+
+    <form class="navbar-brand" th:action="@{/logout}" method="post">
+      <button type="submit" class="btn btn-link">Back to the Home Page</button>
+    </form>
+
+  </div>
+</nav>
+<body>
+<h1>Your profile has been updated, please log in again!</h1>
+</body>
+</html>

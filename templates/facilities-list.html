@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-image: url('https://wallpapercave.com/wp/wp8717927.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: #fff;
+      margin: 0;
+    }
+    .sidenav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      background-color: #111;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+    }
+
+    .sidenav a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 25px;
+      color: #818181;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .sidenav a:hover {
+      color: #f1f1f1;
+    }
+
+    .sidenav .closebtn {
+      position: absolute;
+      top: 0;
+      right: 25px;
+      font-size: 36px;
+      margin-left: 50px;
+    }
+
+    #main {
+      transition: margin-left .5s;
+      padding: 16px;
+    }
+
+    @media screen and (max-height: 450px) {
+      .sidenav {padding-top: 15px;}
+      .sidenav a {font-size: 18px;}
+    }
+    .btn-contact {
+      color: black;
+      background-color: dodgerblue;
+      padding: 0 10px;
+    }
+
+    .container {
+      margin-top: 20px;
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      border: 1px solid #fff; /* White border */
+    }
+
+    .table th,
+    .table td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #fff; /* White bottom border */
+      color: #000; /* Black text */
+    }
+
+    .table th {
+      background-color: #343a40;
+      color: #fff;
+    }
+
+    .table-striped tbody tr:nth-of-type(odd) {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .btn-logout {
+      color: #000;
+    }
+
+    .btn-logout:hover {
+      color: #333;
+    }
+  </style>
+</head>
+
+<body>
+<span style="font-size:50px;cursor:pointer;color: black;padding-left: 10px" onclick="openNav()">&#9776;</span>
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a th:href="@{/}">Profile</a>
+<!--  <a th:href="@{/partner/all}">Partners</a>-->
+<!--  <a th:href="@{/hotels/all}">Hotels</a>-->
+<!--  <a th:href="@{/bars/all}">Bars</a>-->
+<!--  <a th:href="@{/restaurants/all}">Restaurants</a>-->
+<!--  <a th:href="@{/services/all}">Services</a>-->
+  <a th:href="@{/contact}" class="btn-contact">Contact Us!</a>
+  <form class="navbar-brand" th:action="@{/logout}" method="post">
+    <button type="submit" class="btn-logout">LogOut</button>
+  </form>
+</div>
+
+<div class="container mt-4">
+  <table class="table">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Facilities</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="actual :${all_services}">
+      <td th:text="${actual.id}"></td>
+      <td th:text="${actual.name}"></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+<script>
+  function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+  }
+
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+    document.body.style.backgroundColor = "white";
+  }
+</script>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Partner</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('https://wallpapercave.com/wp/wp8717927.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #fff;
+        }
+
+
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidenav a:hover {
+            color: #f1f1f1;
+        }
+
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        #main {
+            transition: margin-left .5s;
+            padding: 16px;
+        }
+
+        @media screen and (max-height: 450px) {
+            .sidenav {
+                padding-top: 15px;
+            }
+
+            .sidenav a {
+                font-size: 18px;
+            }
+        }
+
+        .btn-contact {
+            color: black;
+            background-color: dodgerblue;
+            padding: 0 10px;
+        }
+
+
+        .content{
+            margin-top: 20px;
+            text-align: center;
+            width: 60%;
+            margin-left: 20%;
+            justify-content: center;
+
+        }
+        .form-group{
+            color: black;
+            justify-content: left;
+            text-align: left;
+        }
+
+        .table {
+            position: relative;
+            width: 10px; /* Adjusted width to 80% of the container */
+            border-collapse: collapse;
+            margin: 20px auto 0;
+            border: 1px solid #fff;
+
+        }
+
+        .table th,
+        .table td {
+            text-align: left; /* Centered text in cells */
+            border-bottom: 1px solid #fff;
+            color: #000;
+        }
+
+        .table th {
+            background-color: #343a40;
+            color: transparent;
+        }
+
+        .table tbody tr:nth-of-type(odd) {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+
+        .btn-link {
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .btn-link:hover {
+            color: #ffcc00;
+        }
+
+        .btn-logout {
+            color: #000;
+        }
+
+        .btn-logout:hover {
+            color: #333;
+        }
+        .btn-submit{
+            color: black;
+
+        }
+        table td {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<span style="font-size:50px;cursor:pointer;color: black;padding-left: 10px" onclick="openNav()">&#9776;</span>
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a th:href="@{/}" >Profile</a>
+    <a th:href="@{'/partner/'+ ${partner.id} + '/update'}">Update Partner</a>
+    <a th:href="@{'/partner-admin/new/' + ${partner.id}}">Add admin</a>
+    <a th:href="@{'/hotels/create/' + ${partner.id}}" >Add hotel</a>
+    <a th:href="@{'/bars/create/' + ${partner.id}}">Add bar</a>
+    <a th:href="@{'/restaurants/create/' + ${partner.id}}">Add Restaurant</a>
+<!--    <a th:href="@{/partner/all}">Partners</a>-->
+<!--    <a th:href="@{/hotels/all}">Hotels</a>-->
+<!--    <a th:href="@{/bars/all}">Bars</a>-->
+<!--    <a th:href="@{/restaurants/all}">Restaurants</a>-->
+<!--    <a th:href="@{/services/all}">Services</a>-->
+    <a th:href="@{/contact}" class="btn-contact">Contact Us!</a>
+    <form th:action="@{'/partner/' + ${partner.id} + '/delete'}" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <button type="submit" class="btn-logout">Delete Account</button>
+    </form>
+    <form class="navbar-brand" th:action="@{/logout}" method="post">
+        <button type="submit" class="btn-logout">LogOut</button>
+    </form>
+</div>
+
+<div class="content">
+    <div id="main">
+        <table class="table">
+        <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+            <h1 class="text-center" style="color:black;"> Update Partner </h1>
+            <div class="card-body">
+                <form method="post" th:action="@{'/partner/' +${partner.id} + '/update'}" enctype="multipart/form-data">
+
+                    <input type="hidden" th:value="${partner.id}" th:field="*{partner.id}">
+
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" th:placeholder="${partner.partnerName}"
+                               th:field="*{partner.partnerName}"><br>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" class="form-control" id="address" th:placeholder="${partner.address}"
+                               th:field="*{partner.address}"><br>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telnum">Tel number</label>
+                        <input type="number" class="form-control" id="telnum" th:placeholder="${partner.telNum}"
+                               th:field="*{partner.telNum}"><br>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password"  class="form-control" id="password" placeholder="********" th:field="*{partner.password}"
+                               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required
+                               oninvalid="this.setCustomValidity('- must contains min. one digit\n- one lowercase & uppercase letter\n- minimum of 8 characters long.')"
+                               oninput="this.setCustomValidity('')"><br>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="text"  class="form-control" id="email" th:placeholder="${partner.email}" th:field="*{partner.email}"><br>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="compregnum">Company Reg. Number</label>
+                        <input type="text"  class="form-control" id="compregnum" th:placeholder="${partner.companyRegNum}"
+                               th:field="*{partner.companyRegNum}"><br>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="taxnum">Tax Number</label>
+                        <input type="text"  class="form-control" id="taxnum" th:placeholder="${partner.telNum}"
+                               th:field="*{partner.taxNum}"><br>
+                        <div class="image">
+                            <div class="form-group">
+                                <input type="hidden" th:field="*{partner.photo}">
+                                <input type="file" name="uImage" accept="image/*" class="form-control-file">
+                            </div>
+                    </div>
+                    <div class="box-footer">
+                        <button type="submit" class="btn-submit">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </table>
+        </div>
+    </div>
+<script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+        document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        document.getElementById("main").style.marginLeft= "0";
+        document.body.style.backgroundColor = "white";
+    }
+</script>
+</body>
+</html>

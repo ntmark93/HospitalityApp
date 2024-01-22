@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Hotel Restaurant</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-image: url('https://wallpapercave.com/wp/wp8717927.jpg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        color: #fff;
+        margin: 0;
+    }
+
+    .sidenav {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+    }
+
+    .sidenav a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+    }
+
+    .sidenav a:hover {
+        color: #f1f1f1;
+    }
+
+    .sidenav .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+
+    #main {
+        transition: margin-left .5s;
+        padding: 16px;
+    }
+
+    @media screen and (max-height: 450px) {
+        .sidenav {
+            padding-top: 15px;
+        }
+
+        .sidenav a {
+            font-size: 18px;
+        }
+    }
+
+    .btn-contact {
+        color: black;
+        background-color: dodgerblue;
+        padding: 0 10px;
+    }
+
+    .container {
+        margin-top: 20px;
+    }
+
+    form {
+        margin-top: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        color: black; /* Added color for better visibility */
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+    }
+
+    table {
+        border-collapse: collapse;
+        margin-top: 20px;
+        border: 1px solid #fff; /* White border */
+        width: 100%;
+    }
+
+    .table th,
+    .table td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #fff; /* White bottom border */
+        color: #000; /* Black text */
+    }
+
+    .table th {
+        background-color: #343a40;
+        color: #fff;
+    }
+
+    .table tbody tr:nth-of-type(odd) {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .btn-link {
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .btn-link:hover {
+        color: #ffcc00;
+    }
+
+    .btn-logout {
+        color: #000;
+    }
+
+    .btn-logout:hover {
+        color: #333;
+    }
+
+    .box-footer {
+        margin-top: 20px;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+    .card {
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card h1 {
+        color: #333;
+    }
+
+    .card-body {
+        padding: 0;
+    }
+
+
+</style>
+<body>
+<span style="font-size:50px;cursor:pointer;color: black;padding-left: 10px" onclick="openNav()">&#9776;</span>
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a th:href="@{/}">Profile</a>
+    <a th:href="@{'/hotels/' + ${hotelId} + '/' + ${partnerId}}">Hotel</a>
+<!--    <a th:href="@{/partner/all}">Partners</a>-->
+<!--    <a th:href="@{/hotels/all}">Hotels</a>-->
+<!--    <a th:href="@{/bars/all}">Bars</a>-->
+<!--    <a th:href="@{/restaurants/all}">Restaurants</a>-->
+<!--    <a th:href="@{/services/all}">Services</a>-->
+    <a th:href="@{/contact}" class="btn-contact">Contact Us!</a>
+    <form class="navbar-brand" th:action="@{/logout}" method="post">
+        <button type="submit" class="btn-logout">LogOut</button>
+    </form>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+            <h1 class="text-center"> New Hotel Restaurant</h1>
+            <div class="card-body">
+                <form method="post" th:action="@{'/hotel-restaurant/create/' + ${hotelId} + '/' + ${partnerId}}" enctype="multipart/form-data">
+                    <input type="hidden" th:value="${new_hotel_restaurant.id}" th:field="*{new_hotel_restaurant.id}">
+                    <div class="form-group">
+                        <label> Restaurant Name </label>
+                        <label>
+                            <input
+                                    type="text"
+                                    name="name"
+                                    th:field="*{new_hotel_restaurant.name}"
+                                    class="form-control"
+                                    placeholder="Name"
+                            />
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label> Description </label>
+                        <label>
+                            <input
+                                    type="text"
+                                    name="description"
+                                    th:field="*{new_hotel_restaurant.description}"
+                                    class="form-control"
+                                    placeholder="Description"
+                            />
+                        </label>
+                    </div>
+                    <div class="image">
+                    <div class="form-group">
+                        <input type="hidden" th:field="*{new_hotel_restaurant.photo}">
+                        <input type="file" name="hrImage" accept="image/*" class="form-control-file">
+                    </div>
+                    <div class = "box-footer">
+                        <button type="submit" class = "btn-submit">
+                            Ready
+                        </button>
+                    </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+        document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+        document.body.style.backgroundColor = "white";
+    }
+</script>
+</html>

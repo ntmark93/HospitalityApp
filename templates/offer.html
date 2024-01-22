@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title> Booking</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+<style>
+
+  * {
+    font-family: "poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background: url("https://img.freepik.com/free-vector/hand-drawn-boho-background-with-leaves_23-2149068411.jpg") center/cover ;
+    height: 100vh;
+  }
+
+  .icons-size {
+    color: #333;
+    font-size: 14px;
+  }
+
+  .action {
+    position: fixed;
+    right: 30px;
+    top: 20px
+  }
+
+  .action .profile {
+    border-radius: 50%;
+    cursor: pointer;
+    height: 60px;
+    overflow: hidden;
+    position: relative;
+    width: 60px;
+  }
+
+  .action .profile img {
+    width: 100%;
+    top: 0;
+    position: absolute;
+    object-fit: cover;
+    left: 0;
+    height: 100%;
+  }
+
+  .action .menu {
+    background-color: #FFF;
+    /*box-sizing:  25px;*/
+    border-radius: 15px;
+    padding: 10px 20px;
+    position: absolute;
+    right: -10px;
+    width: 200px;
+    transition: 0.5s;
+    top: 120px;
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  .action .menu.active {
+    opacity: 1;
+    top: 80px;
+    visibility: visible;
+  }
+
+  .action .menu::before {
+    background-color: #fff;
+    content: '';
+    height: 20px;
+    position: absolute;
+    right: 30px;
+    transform: rotate(45deg);
+    top: -5px;
+    width: 20px;
+  }
+
+  .action .menu h3 {
+    color: #555;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.3em;
+    padding: 20px 0px;
+    text-align: left;
+    width: 100%;
+  }
+
+  .action .menu h3 div {
+    color: #818181;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .action .menu ul li {
+    align-items: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: left;
+    list-style: none;
+    padding: 10px 0px;
+  }
+
+  .action .menu ul li img {
+    max-width: 20px;
+    margin-right: 10px;
+    opacity: 0.5;
+    transition: 0.5s
+  }
+
+  .action .menu ul li a {
+    display: inline-block;
+    color: #555;
+    font-size: 14px;
+    font-weight: 600;
+    padding-left: 15px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.5s;
+  }
+
+  .action .menu ul li:hover img {
+    opacity: 1;
+  }
+
+  .action .menu ul li:hover a {
+    color: #ff00ff;
+  }
+  body {
+    font-family: "Roboto", sans-serif;
+    background: url("https://marketplace.canva.com/EAFCytpuJ08/1/0/1600w/canva-green-wateroclor-leaf-linktree-background-0Mp0WYk6_8E.jpg") center/cover;
+
+
+  }
+  .table {
+    margin: 20px auto;
+      width: 70%;
+    border-spacing: 0;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: transparent;
+    padding: 10px;
+    scroll-behavior: smooth;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .table th, .table td {
+    min-width: 120px;
+    padding: 10px;
+  }
+
+
+  /* Scrollbar styles */
+  .table::-webkit-scrollbar {
+    height: 12px;
+  }
+
+  .table::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 6px;
+  }
+
+  .table::-webkit-scrollbar-track {
+    background-color: #eee;
+    border-radius: 6px;
+  }
+  .table th {
+    font-weight: 300;
+    font-size: 16px;
+    color: black;
+    line-height: 26px;
+    padding: 18px 30px;
+  }
+  .table thead tr {
+    background: transparent;
+
+  }
+  .table td {
+    padding: 30px 10px;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 26px;
+    text-transform: uppercase;
+    color: black;
+  }
+  .table tbody tr:nth-child(odd) {
+    background: bisque;
+  }
+  .table tbody tr:nth-child(even) {
+    background: bisque;
+  }
+  .table__wrapper {
+    padding-top: 40px;
+  }
+  .btn {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 25px;
+    text-transform: uppercase;
+    width: 170px;
+    text-align: center;
+    padding: 10px;
+    border-radius:10px;
+    transition: 0.3s ease;
+    text-decoration: none;
+  }
+  .btn:hover {
+    color: white;
+  }
+  /*.btn__active {*/
+  /*  color: #4ed99c;*/
+  /*  border: 2px solid #4ed99c;*/
+  /*  justify-content: left;*/
+  /*  left: 100px;*/
+  /*}*/
+  /*.btn__active:hover {*/
+  /*  background: #4ed99c;*/
+  /*}*/
+  /*.btn__pledged {*/
+  /*  color: #f14044;*/
+  /*  border: 2px solid #f14044;*/
+  /*}*/
+  /*.btn__pledged:hover {*/
+  /*  background: #f14044;*/
+  /*}*/
+  @media (max-width: 768px) {
+    .table td {
+      display: block;
+      text-align: right;
+    }
+    .table td:before {
+      content: attr(data-label);
+      float: left;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+    .table thead display none tr {
+      margin-bottom: 30px;
+      display: block;
+    }
+  }
+
+  .credit a{
+    text-decoration: none;
+    color: #000;
+    font-weight: 800;
+  }
+
+
+</style>
+<body>
+<table class="table">
+    <tr th:each="actualRoom : ${room}">
+        <td th:text="${actualRoom.id}"></td>
+        <td th:text="${actualRoom.roomNumber}"></td>
+        <td th:text="${actualRoom.hotel.description}"></td>
+        <td th:if="${actualRoom.getPhoto() == null}">
+            No Image Available
+        </td>
+        <td th:unless="${actualRoom.getPhoto() == null}">
+            <img th:src="@{'/uploads/' + ${actualRoom.getPhoto()}}" alt="Image" style="width: 250px; height: auto;">
+        </td>
+        <td>
+            <a th:href="@{'/reservation/'+${userId.id} + '/create-room/' + ${actualRoom.id}}">
+                <button class="btn">Book Now</button>
+            </a>
+        </td>
+    </tr>
+    <tr th:each="actualRest : ${restaurant}">
+        <td th:text="${actualRest.id}"></td>
+        <td th:text="${actualRest.name}"></td>
+        <td th:text="${actualRest.description}"></td>
+        <td th:if="${actualRest.getPhoto() == null}">
+            No Image Available
+        </td>
+        <td th:unless="${actualRest.getPhoto() == null}">
+            <img th:src="@{'/uploads/' + ${actualRest.getPhoto()}}" alt="Image" style="width: 250px; height: auto;">
+        </td>
+        <td>
+            <a th:href="@{'/reservation/'+${userId.id} + '/create-restaurant/' + ${actualRest.id}}">
+                <button class="btn">Book Now</button>
+            </a>
+        </td>
+    </tr>
+    <tr th:each="actualBar : ${bar}">
+        <td th:text="${actualBar.id}"></td>
+        <td th:text="${actualBar.name}"></td>
+        <td th:text="${actualBar.description}"></td>
+        <td th:if="${actualBar.getPhoto() == null}">
+            No Image Available
+        </td>
+        <td th:unless="${actualBar.getPhoto() == null}">
+            <img th:src="@{'/uploads/' + ${actualBar.getPhoto()}}" alt="Image" style="width: 250px; height: auto;">
+        </td>        <td>
+            <a th:href="@{'/reservation/'+${userId.id} + '/create-bar/' + ${actualBar.id}}">
+                <button class="btn">Book Now</button>
+            </a>
+        </td>
+    </tr>
+    <tr th:each="hr : ${hotelRestaurant}">
+        <td th:text="${hr.id}"></td>
+        <td th:text="${hr.name}"></td>
+        <td th:text="${hr.description}"></td>
+        <td th:if="${hr.getPhoto() == null}">
+            No Image Available
+        </td>
+        <td th:unless="${hr.getPhoto() == null}">
+            <img th:src="@{'/uploads/' + ${hr.getPhoto()}}" alt="Image" style="width: 250px; height: auto;">
+        </td>        <td>
+            <a th:href="@{'/reservation/'+${userId.id} + '/create-hotel-restaurant/' + ${hr.id}}">
+                <button class="btn">Book Now</button>
+            </a>
+        </td>
+    </tr>
+    <tr th:each="hb : ${hotelBar}">
+        <td th:text="${hb.id}"></td>
+        <td th:text="${hb.name}"></td>
+        <td th:text="${hb.description}"></td>
+        <td th:if="${hb.getPhoto() == null}">
+            No Image Available
+        </td>
+        <td th:unless="${hb.getPhoto() == null}">
+            <img th:src="@{'/uploads/' + ${hb.getPhoto()}}" alt="Image" style="width: 250px; height: auto;">
+        </td>        <td>
+            <a th:href="@{'/reservation/'+${userId.id} + '/create-hotel-bar/' + ${hb.id}}">
+                <button class="btn">Book Now</button>
+            </a>
+        </td>
+    </tr>
+</table>
+<div class="action">
+    <div class="profile" onclick="menuToggle();">
+        <img th:src="@{'/uploads/' + ${userId.getPhoto()}}"
+             th:if="${userId.getPhoto() != null}"
+             alt="User Image">
+        <img th:unless="${userId.getPhoto() != null}"
+             src="/icon.png" alt="No Image Available">
+    </div>
+
+<div class="menu">
+  <h3 th:text="${userId.surName + ' ' + userId.firstName + ' ' + userId.lastName}"></h3>
+  <div>
+
+  </div>
+
+  <ul>
+    <li>
+      <span class="material-icons icons-size">person</span>
+      <a href="/user/current">My Profile</a>
+    </li>
+    <li>
+      <span class="material-icons icons-size">mode</span>
+      <a th:href="@{'/user/'+ ${userId.id} + '/update'}">Edit Account</a>
+
+    </li>
+    <li>
+      <span class="material-icons icons-size">book_online</span>
+      <a th:href="@{'/reservation/'+${userId.id} + '/all'}">Reservation </a>
+
+    </li>
+    <li>
+      <span class="material-icons icons-size">logout</span>
+      <form th:action="@{/logout}" method="post">
+        <button type="submit" class="btn-logout">LogOut</button>
+      </form>
+    </li>
+    <li>
+      <span class="material-icons icons-size">delete</span>
+      <form th:action="@{'/user/' + ${userId.id} + '/delete'}" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <button type="submit" class="btn btn-link">Delete Account</button>
+      </form>
+    </li>
+    <li>
+      <span class="material-icons icons-size">contact_page</span>
+      <a th:href="@{/contact}" class="btn-contact">Contact Us!</a>
+    </li>
+  </ul>
+</div>
+</div>
+
+<script>
+  function menuToggle() {
+    const toggleMenu = document.querySelector('.menu');
+    toggleMenu.classList.toggle('active')
+  }
+</script>
+</body>
+
+</html>
